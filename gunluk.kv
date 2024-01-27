@@ -1,0 +1,37 @@
+<NotDefteri>:
+    orientation: 'vertical'
+    spacing: 10
+    padding: 10
+
+    TextInput:
+        id: metin_alani
+        font_size: 16
+        multiline: True
+        wrap: True
+        hint_text: 'Metni buraya yazın...'
+
+
+    BoxLayout:
+        orientation: 'horizontal'
+        spacing: 10
+
+        Button:
+            text: 'Kaydet (Proje İçine)'
+            size_hint: (0.2, 1)
+            on_press: root.kaydet()
+
+        Button:
+            text: 'Sil'
+            size_hint: (0.2, 1)
+            on_press: root.sil_metin()
+
+        Button:
+            text: 'Bilgi'
+            size_hint: (0.2, 1)
+            on_press: root.bilgi_penceresi("Bu bir not defteri uygulamasıdır.")
+
+        Button:
+            text: 'Masaüstüne Kaydet'
+            size_hint: (0.3, 1)
+            on_press: root.kaydet_masaustune()
+

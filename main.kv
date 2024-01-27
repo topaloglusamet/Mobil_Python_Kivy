@@ -1,0 +1,21 @@
+
+<PopUpPencere>:
+	size_hint: (None,None)
+	size: (500, 200)
+	auto_dismiss:False
+	title: "Adınız:"
+	#on_touch_down: self.dismiss()
+	BoxLayout:
+		TextInput:
+			id: girilen_ad
+			size_hint_x: 3
+		Button:
+			text: "Tamam"
+			size_hint_x: 1
+			on_press: app.popup.olayDugme(app)
+
+
+
+
+
+

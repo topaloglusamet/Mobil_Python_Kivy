@@ -1,0 +1,102 @@
+<metinDuzenleyici>:
+BoxLayout:
+    orientation:"vertical"
+    exit_on_escape:False
+    TextInput:
+        size_hint_y:90
+        id:metin
+        multiline:True
+    BoxLayout:
+        size_hint_y:10
+        Button:
+            text:"Aç"
+            on_press:app.dosyaAcBtn()
+        Button:
+            text:"Kaydet"
+            on_press:app.dosyaKaydetBtn()
+        Button:
+            text:"Farklı Kaydet"
+            on_press:app.farkliKaydetPencere()
+        Button:
+            text:"Yeni"
+            on_press:app.yeniDosyaAc()
+<farkliKaydetForm>:
+    title:"Dosya Kaydet"
+    size_hint:(.9,.9)
+    BoxLayout:
+        orientation:"vertical"
+        FileChooserListView:
+            size_hint_y:80
+            id:dosya_secim
+            filters:["*.*"]
+            path:app.son_yol
+            on_selection:app.farkliKaydetSec(root)
+        BoxLayout:
+            size_hint_y:10
+            Label:
+                text:"Dosya Adi:"
+                size_hint_x:20
+            TextInput:
+                id:dosya_adi
+                size_hint_x:80
+        BoxLayout:
+            size_hint_y:10
+            Button:
+                text:"Kaydet"
+                on_press:app.kaydetBtn(root); root.dismiss()
+            Button:
+                text:"Vazgeç"
+                on_press:root.dismiss()
+<dosyaAcForm>:
+    title:"Dosya Aç"
+    size_hint:(.9,.9)
+    BoxLayout:
+        orientation:"vertical"
+        FileChooserListView:
+            size_hint_y:90
+            id:dosya_secim
+            filters:["*.*"]
+            path:app.son_yol
+        BoxLayout:
+            size_hint_y:10
+            Button:
+                text:"Aç"
+                on_press:app.dosyaOku(dosya_secim); root.dismiss()
+            Button:
+                text:"Vazgeç"
+                on_press:root.dismiss()
+<dosyaKaydedilmedi>:
+    title:"Mevcut dosya kaydedilmedi!"
+    size_hint:(.9,.9)
+    BoxLayout:
+        orientation:"vertical"
+        Label:
+            text:"Çaliştığınız dosya kaydedilmedi! Kaydedilsin mi?"
+            size_hint_y:90
+        BoxLayout:
+            size_hint_y:10
+            Button:
+                text:"Kaydet"
+                on_press:app.dosyaKaydedilmediKaydet(root)
+            Button:
+                text:"Hayır"
+                on_press:app.dosyaAcPencere(); root.dismiss()
+            Button:
+                text:"Vazgeç"
+                on_press:root.dismiss()
+<yeniDosyaPencere>:
+    title:"Mevcut Dosya Kaydedilmedi"
+    size_hint:(.8,.8)
+    BoxLayout:
+        orientation:"vertical"
+        Label:
+            size_hint_y:90
+            text:"Mevcut dosya kaydedilmedi! Yeni dosya açılsın mı?"
+        BoxLayout:
+            size_hint_y:10
+            Button:
+                text:"Vazgeç"
+                on_press:root.dismiss()
+            Button:
+                text:"Evet"
+                on_press:app.yeniDosyaAc(); root.dismiss()
